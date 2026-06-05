@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Role {
+  id         String      @id @default(cuid())
+  title      String
+  jdText     String
+  spec       String // JSON-encoded curated RoleSpec
+  createdAt  DateTime    @default(now())
+  candidates Candidate[]
+}
+
+model Candidate {
+  id         String   @id @default(cuid())
+  roleId     String
+  role       Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  name       String
+  resumeText String   @default("")
+  callNotes  String   @default("")
+  assessment String? // JSON-encoded Assessment, null until assessed
+  status     String   @default("pending") // pending | done | error
+  error      String?
+  createdAt  DateTime @default(now())
+
+  @@index([roleId])
+}
