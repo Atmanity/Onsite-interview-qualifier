@@ -68,6 +68,18 @@ Open http://localhost:3000.
 | `ASSESSMENT_MODEL`  | `claude-opus-4-8`  | Model used. Set to `claude-sonnet-4-6` for lower cost. |
 | `DATABASE_URL`      | `file:./dev.db`    | SQLite database location.                        |
 
+## Verify the model wiring
+
+With `ANTHROPIC_API_KEY` set in `.env`, you can run a live end-to-end check
+(curates a JD, then scores a strong and a weak sample candidate):
+
+```bash
+npm run smoke
+```
+
+It prints each step's score, recommendation, and rationale — handy for
+confirming your key works and seeing the calibration before using the UI.
+
 ## Notes
 
 - Resume/notes can always be pasted as text; file upload supports **PDF, DOCX,
