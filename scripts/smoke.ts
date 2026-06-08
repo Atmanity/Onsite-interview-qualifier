@@ -1,6 +1,6 @@
 // End-to-end smoke test of the real Claude calls used by the app.
 // Runs the actual src/lib/anthropic.ts logic against the live API.
-import { curateRole, assessCandidate } from "../src/lib/anthropic.ts";
+import { curateRole, assessCandidate } from "../src/lib/anthropic";
 
 const JD = `Founding Product Engineer — early-stage seed startup (5 people).
 You'll own features end-to-end: design, build, and ship our core web platform in
